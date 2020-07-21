@@ -20,7 +20,46 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
+
+<!-- onsubmit script -->
+
+<script>  
+
+function formCheck(){ 
+var email=document.registerForm.registerEmail.value;
+	
+	if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+	  {
+	  
+	    alert("You have entered an invalid eMail address!")
+	    
+	}
+	var phone=document.registerForm.registerPhone.value;	
+	if(!phone.match(/^\d+$/) || phone.length!=10){
+		
+		alert("Invalid Phone number");
+		
+	}
+	var pass=document.registerForm.registerPassword.value;	
+	if(!(pass.length>=8 && pass.length<=15)){
+		alert("Password should be atleast 8-15 characters long");
+		
+	}
+	
+	
+	
+}
+	
+
+
+
+</script>  
+
+
   <body>
+  
+  
+  
     <div class="container-fluid outer-align">
       <div class="custom-width">
         <div class="container-fluid bg-info p-3">
@@ -32,7 +71,7 @@
               />
             </div>
             <div class="font-weight-bold text-light sign-in-text">
-              Sign in
+              Register
             </div>
             <div class="d-flex justify-content-center">
               <img
@@ -44,22 +83,49 @@
         </div>
 
         <div class="container mt-5">
+        <form name="registerForm">
           <div class="input-group">
             <input
               type="text"
               placeholder="mail@example.com"
               class="form-control"
+              name="registerEmail"
             />
             <div class="input-group-append">
               <span class="input-group-text material-icons">email</span>
             </div>
           </div>
-
+	<!-- mobile number -->
+	<div class="input-group mt-3">
+            <input
+              type="text"
+              placeholder="Phone Number"
+              class="form-control"
+              name="registerPhone"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text material-icons">phone</span>
+            </div>
+          </div>
+	<!-- date -->
+		<div class="input-group mt-3" >
+            <input
+              type="date"
+              placeholder="Date"
+              class="form-control"
+              name="registerDate"
+            />
+            
+          </div>
+	
+	
+	
           <div class="input-group mt-3">
             <input
               type="password"
               placeholder="password"
               class="form-control"
+              name="registerPassword"
             />
             <div class="input-group-append">
               <span class="input-group-text material-icons"
@@ -69,10 +135,11 @@
           </div>
 
           <button
-            type="button"
+    		type="button"
             class="btn btn-info sign-in-button mt-5 font-weight-bold"
+            onclick="return formCheck()"
           >
-            SIGN IN
+            Create Account
           </button>
 
           <div class="d-flex justify-content-between mt-2">
@@ -107,8 +174,10 @@
           </button>
 
           <button type="button" class="btn btn-epam font-weight-bold mt-5">
-            &lt; EPAM LOGIN &gt;
+            &lt; EPAM Register &gt;
           </button>
+          
+          </form>
         </div>
       </div>
     </div>
